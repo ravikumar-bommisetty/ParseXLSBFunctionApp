@@ -1,0 +1,32 @@
+using System.IO;
+using Microsoft.Azure.WebJobs;
+using Microsoft.Extensions.Logging;
+using System.Data;
+using Spire.Xls;
+
+namespace main.function
+{
+    public class ParseXLSBFunction
+    {
+        [FunctionName("ParseXLSBFunction")]
+        public void Run([BlobTrigger("samples/{name}", Connection = "MAPT_STORAGE_CONN_STRING")]Stream myBlob,
+                        [Blob("output/blank3u.xlsx", FileAccess.Write, Connection = "MAPT_STORAGE_CONN_STRING")] Stream outputBlob, 
+                        string name, ILogger log)
+        {
+            log.LogInformation($"C# Blob trigger function Processed blob\n Name:{name} \n Size: {myBlob.Length} Bytes");
+            Workbook workbook = new Workbook();
+            workbook.LoadFromStream(myBlob);
+            // Get the "Blank 3-U" worksheet
+            Worksheet worksheet = workbook.Worksheets["Blank 3-U"];
+            DataTable dt = worksheet.ExportDataTable(worksheet.AllocatedRange, false, true);
+            Workbook outputWorkbook = new Workbook();
+            Worksheet outputWorksheet = outputWorkbook.Worksheets[0];
+            outputWorksheet.InsertDataTable(dt, true, 1, 1);
+            outputWorkbook.SaveToStream(outputBlob, FileFormat.Version2013);
+
+            // Dispose the workbook
+            workbook.Dispose();
+            outputWorkbook.Dispose();
+        }
+    }
+}
