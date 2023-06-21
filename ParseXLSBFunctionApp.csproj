@@ -6,7 +6,7 @@
   <ItemGroup>
     <PackageReference Include="Microsoft.Azure.WebJobs.Extensions.Storage" Version="5.0.1" />
     <PackageReference Include="Microsoft.NET.Sdk.Functions" Version="4.1.1" />
-    <PackageReference Include="Spire.XLS" Version="13.6.0" />
+    <PackageReference Include="FreeSpire.XLS" Version="12.7.0" />
   </ItemGroup>
   <ItemGroup>
     <None Update="host.json">
