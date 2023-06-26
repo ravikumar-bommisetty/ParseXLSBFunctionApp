@@ -10,7 +10,7 @@ namespace main.function
     {
         [FunctionName("ParseXLSBFunction")]
         public void Run([BlobTrigger("samples/{name}", Connection = "MAPT_STORAGE_CONN_STRING")]Stream myBlob,
-                        [Blob("output/blank3u.xlsx", FileAccess.Write, Connection = "MAPT_STORAGE_CONN_STRING")] Stream outputBlob, 
+                        [Blob("output/{name}.xlsx", FileAccess.Write, Connection = "MAPT_STORAGE_CONN_STRING")] Stream outputBlob, 
                         string name, ILogger log)
         {
             log.LogInformation($"C# Blob trigger function Processed blob\n Name:{name} \n Size: {myBlob.Length} Bytes");
