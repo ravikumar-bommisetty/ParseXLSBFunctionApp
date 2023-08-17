@@ -13,6 +13,7 @@ namespace main.function
                         [Blob("output/{name}.xlsx", FileAccess.Write, Connection = "MAPT_STORAGE_CONN_STRING")] Stream outputBlob, 
                         string name, ILogger log)
         {
+            System.DateTime start = System.DateTime.Now;
             log.LogInformation($"C# Blob trigger function Processed blob\n Name:{name} \n Size: {myBlob.Length} Bytes");
             Workbook workbook = new Workbook();
             workbook.LoadFromStream(myBlob);
@@ -27,6 +28,8 @@ namespace main.function
             // Dispose the workbook
             workbook.Dispose();
             outputWorkbook.Dispose();
+            System.DateTime end = System.DateTime.Now;
+            log.LogInformation($" DigiIP C# Azure Function execution time: {end-start}"); 
         }
     }
 }
