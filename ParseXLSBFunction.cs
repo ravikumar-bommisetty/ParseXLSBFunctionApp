@@ -9,8 +9,8 @@ namespace main.function
     public class ParseXLSBFunction
     {
         [FunctionName("ParseXLSBFunction")]
-        public void Run([BlobTrigger("samples/{name}", Connection = "MAPT_STORAGE_CONN_STRING")]Stream myBlob,
-                        [Blob("output/{name}.xlsx", FileAccess.Write, Connection = "MAPT_STORAGE_CONN_STRING")] Stream outputBlob, 
+        public void Run([BlobTrigger("samples/{name}", Connection = "AzureWebJobsStorage")]Stream myBlob,
+                        [Blob("output/{name}.xlsx", FileAccess.Write, Connection = "AzureWebJobsStorage")] Stream outputBlob, 
                         string name, ILogger log)
         {
             System.DateTime start = System.DateTime.Now;
