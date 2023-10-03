@@ -14,7 +14,7 @@ namespace main.function
                         string name, ILogger log)
         {
             System.DateTime start = System.DateTime.Now;
-            log.LogInformation($"C# Blob trigger function Processed blob\n Name:{name} \n Size: {myBlob.Length} Bytes");
+            log.LogInformation($"C# Blob trigger function Processed blob\n Name:{name} \n Size: {myBlob.Length} Bytes A3");
             Workbook workbook = new Workbook();
             workbook.LoadFromStream(myBlob);
             // Get the "Blank 3-U" worksheet
