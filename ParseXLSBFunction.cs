@@ -13,7 +13,7 @@ namespace main.function
                         [Blob("output/blank3u.xlsx", FileAccess.Write, Connection = "MAPT_STORAGE_CONN_STRING")] Stream outputBlob, 
                         string name, ILogger log)
         {
-            log.LogInformation($"C# Blob trigger function Processed blob\n Name:{name} \n Size: {myBlob.Length} Bytes");
+            log.LogInformation($"C# Blob trigger function Processed blob\n Name:{name} \n Size: {myBlob.Length} Bytes t1");
             Workbook workbook = new Workbook();
             workbook.LoadFromStream(myBlob);
             // Get the "Blank 3-U" worksheet
