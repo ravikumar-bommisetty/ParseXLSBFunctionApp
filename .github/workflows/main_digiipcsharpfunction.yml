@@ -39,4 +39,4 @@ jobs:
           app-name: 'digiipcsharpfunction'
           slot-name: 'Production'
           package: '${{ env.AZURE_FUNCTIONAPP_PACKAGE_PATH }}/output'
-          publish-profile: ${{ secrets.AZUREAPPSERVICE_PUBLISHPROFILE_FB9101E9A20E460B9F4176EA6278717D }}
+          publish-profile: ${{ secrets.AZUREAPPSERVICE_PUBLISHPROFILE_BFDEB61983F74DE7901CC63E1F4CEC66 }}
